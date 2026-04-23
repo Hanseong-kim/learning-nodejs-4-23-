@@ -1,4 +1,4 @@
-# learning-nodejs-4/23-
+# learning-nodejs 4/23
 
 1. What is node.js
    
@@ -44,3 +44,44 @@
   
   NPM : The world's largest ecosystem of open-source libraries. 세계 최대 규모의 오픈 소스 라이브러리 생태계입니다.
    
+5. Practical Project: Global Weather Monitoring Map
+실습 프로젝트: 실시간 글로벌 날씨 모니터링 지도
+
+To apply Node.js core concepts, I developed a real-time weather dashboard that fetches and visualizes data from around the world.
+Node.js의 핵심 개념을 적용하기 위해 전 세계 실시간 날씨 데이터를 수집하고 시각화하는 대시보드를 개발했습니다.
+
+1) Implementation Details (구현 내용)
+Real-time Data Pipeline: Fetches live weather data for 20+ global cities using the OpenWeather API.
+
+실시간 데이터 파이프라인: OpenWeather API를 사용하여 20개 이상의 글로벌 도시의 실시간 날씨 데이터를 수집합니다.
+
+Asynchronous Parallelism: Leveraged Promise.all to handle multiple API requests concurrently, demonstrating Node.js's non-blocking I/O.
+
+비동기 병렬 처리: Promise.all을 사용하여 여러 API 요청을 동시에 처리함으로써 Node.js의 논블로킹 I/O 특성을 실습했습니다.
+
+Data Decoupling: Managed city lists in a separate cities.json file to improve maintainability and separate data from logic.
+
+데이터 분리: 유지보수성을 높이고 로직과 데이터를 분리하기 위해 도시 리스트를 별도의 cities.json 파일로 관리합니다.
+
+Full-stack Integration: Connected a Node.js Express backend with a Leaflet.js frontend to visualize geographic data.
+
+풀스택 통합: Node.js Express 백엔드와 Leaflet.js 프론트엔드를 연결하여 지리 데이터를 시각화했습니다.
+
+2) Project Structure (프로젝트 구조)
+server.js: Express server handling API requests and data fetching.
+
+cities.json: Externalized data source for city monitoring lists.
+
+index.html: Interactive map interface using Leaflet.js.
+
+.env: Secure management of API environment variables.
+
+3) How to Run (실행 방법)
+Bash
+# Install dependencies
+npm install express cors dotenv
+
+# Start the server
+node server.js
+
+# Open index.html in your browser
