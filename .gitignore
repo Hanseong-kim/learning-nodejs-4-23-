@@ -1,0 +1,4 @@
+node_modules/
+.env
+*_weather.json
+report.json

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Global Weather Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        /* 화면 전체를 지도로 채우고 여백을 없앱니다 */
+        body { margin: 0; padding: 0; }
+        #map { height: 100vh; width: 100vw; }
+        h1 {
+            position: absolute;
+            top: 10px;
+            left: 50px;
+            z-index: 1000;
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>🌍 Global Weather Map</h1>
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // 1. 지도 초기화 (세계가 한눈에 들어오도록 설정)
+        // noWrap: true를 추가하여 지도가 무한 반복되는 것을 막습니다.
+        const map = L.map('map', {
+            minZoom: 2,
+            maxBounds: [[-90, -180], [90, 180]]
+        }).setView([20, 0], 2);
+
+        // 2. 다른 지도 타일 서버 사용 (Access Blocked 해결을 위해 CartoDB 사용)
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; OpenStreetMap &copy; CARTO',
+            noWrap: true // 지도가 좌우로 반복되지 않게 설정
+        }).addTo(map);
+
+        // 3. 백엔드 데이터 가져오기
+        fetch('http://localhost:3000/api/weather-map')
+            .then(res => res.json())
+            .then(data => {
+                data.forEach(loc => {
+                    const marker = L.marker([loc.lat, loc.lon]).addTo(map);
+                    marker.bindPopup(`<b>${loc.city}</b><br>Temp: ${loc.temp}°C<br>${loc.desc}`);
+                });
+            })
+            .catch(err => console.error("Data Fetch Error:", err));
+    </script>
+</body>
+</html>
