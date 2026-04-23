@@ -82,4 +82,4 @@ npm install express cors dotenv
 # Start the server
 node server.js
 
-# Open index.html in your browser
+Open index.html in your browser
