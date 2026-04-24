@@ -33,6 +33,7 @@ Libuv : A multi-platform C library that handles the event loop, thread pool, and
 Non-blocking I/O	: The ability to handle multiple requests without waiting for one to finish. 
 
 NPM : The world's largest ecosystem of open-source libraries. 세계 최대 규모의 오픈 소스 라이브러리 생태계입니다.
+
 ---
 ## 4. Practical Project: Global Weather Monitoring Map
 This project demonstrates Node.js core concepts by building a real-time dashboard that fetches and visualizes global meteorological data.
