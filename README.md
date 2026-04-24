@@ -48,16 +48,24 @@ Full-stack Integration: Connects an Express.js backend with a Leaflet.js fronten
 
 ### 2) Project Structure
 server.js: The Express server responsible for API routing and data fetching.
-3) Execution Guide
 
-``` 1. Install necessary dependencies
+cities.json: The externalized data source containing coordinates for monitored cities.
+
+index.html: The interactive map interface utilizing Leaflet.js for the UI.
+
+.env: Secure storage for sensitive API keys and environment variables.
+
+### 3) Execution Guide
+
+```
+# 1. Install necessary dependencies
   npm install express cors dotenv`
 
- 2. Launch the backend server
+# 2. Launch the backend server
 node server.js
 
 # 3. Access the interface
-# Open index.html in a web browser to view the real-time map.
+Open index.html in a web browser to view the real-time map.
 
 cities.json: The externalized data source containing coordinates for monitored cities.
 
